@@ -13,10 +13,6 @@ pnpm-debug.log*
 logs/
 *.log
 
-# Uploads
-uploads/
-src/uploads/
-
 # Prisma
 prisma/dev.db
 prisma/dev.db-journal
@@ -31,3 +27,6 @@ prisma/dev.db-journal
 *.njsproj
 *.sln
 *.sw?
+
+# Uploads
+.nii

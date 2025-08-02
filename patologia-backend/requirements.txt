@@ -1,0 +1,11 @@
+monai
+numpy
+torch
+pydicom
+pillow
+scikit-image
+scipy
+opencv-python-headless
+tqdm
+matplotlib
+SimpleITK

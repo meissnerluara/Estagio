@@ -1,0 +1,8 @@
+{
+  "name": "patologia-deploy",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "deploy:render": "cd patologia-backend && npm install && npm run build:frontend && npm run install:python && npm run start"
+  }
+}
