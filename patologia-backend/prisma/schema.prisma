@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Exame {
+  id            Int        @id @default(autoincrement())
+  nome          String
+  tipoImagem    String
+  especialidade String
+  imagemUrl     String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  perguntas     Pergunta[]
+  professor     Professor  @relation(fields: [professorId], references: [id])
+  professorId   Int
+}
+
+model Pergunta {
+  id            Int                    @id @default(autoincrement())
+  enunciado     String
+  alternativaA  String
+  alternativaB  String
+  alternativaC  String
+  alternativaD  String
+  alternativaE  String
+  correta       String // Ex: "A", "B", ...
+  createdAt     DateTime               @default(now())
+  updatedAt     DateTime               @updatedAt
+  exame         Exame                  @relation(fields: [exameId], references: [id])
+  exameId       Int
+  questionarios QuestionarioPergunta[]
+  respostas     Resposta[]
+  professor     Professor              @relation(fields: [professorId], references: [id])
+  professorId   Int
+}
+
+model Questionario {
+  id          Int                    @id @default(autoincrement())
+  nome        String
+  createdAt   DateTime               @default(now())
+  updatedAt   DateTime               @updatedAt
+  perguntas   QuestionarioPergunta[]
+  respostas   Resposta[]
+  professor   Professor              @relation(fields: [professorId], references: [id])
+  professorId Int
+  resultados  Resultado[]
+}
+
+model QuestionarioPergunta {
+  questionario   Questionario @relation(fields: [questionarioId], references: [id])
+  questionarioId Int
+  pergunta       Pergunta     @relation(fields: [perguntaId], references: [id])
+  perguntaId     Int
+  ordem          Int
+
+  @@id([questionarioId, perguntaId])
+}
+
+model Resposta {
+  id             Int          @id @default(autoincrement())
+  aluno          Aluno        @relation(fields: [alunoId], references: [id])
+  alunoId        Int
+  questionario   Questionario @relation(fields: [questionarioId], references: [id])
+  questionarioId Int
+  pergunta       Pergunta     @relation(fields: [perguntaId], references: [id])
+  perguntaId     Int
+  alternativa    String
+  correta        Boolean
+  tentativa      Int          @default(1)
+  createdAt      DateTime     @default(now())
+}
+
+model Aluno {
+  id         Int         @id @default(autoincrement())
+  nome       String
+  email      String      @unique
+  senha      String
+  rgm        String      @unique
+  curso      String
+  periodo    String
+  turma      String
+  tipo       String      @default("aluno")
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  respostas  Resposta[]
+  resultados Resultado[]
+}
+
+model Professor {
+  id            Int            @id @default(autoincrement())
+  nome          String
+  email         String         @unique
+  senha         String
+  matricula     String         @unique
+  tipo          String         @default("professor")
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  exames        Exame[]
+  perguntas     Pergunta[]
+  questionarios Questionario[]
+}
+
+model Resultado {
+  id             Int          @id @default(autoincrement())
+  aluno          Aluno        @relation(fields: [alunoId], references: [id])
+  alunoId        Int
+  questionario   Questionario @relation(fields: [questionarioId], references: [id])
+  questionarioId Int
+  nota           Float
+  createdAt      DateTime     @default(now())
+
+  @@unique([alunoId, questionarioId])
+}
