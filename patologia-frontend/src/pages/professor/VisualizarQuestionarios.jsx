@@ -42,7 +42,7 @@ export default function VisualizarQuestionarios() {
       <div className="container-visualizarquestionarios-professor">
         <div className="card text-center">
           <BotaoVoltar />
-          <p>Carregando Questionáios...</p>
+          <p>Carregando Questionários...</p>
         </div>
       </div>
     );

@@ -135,6 +135,9 @@ class QuestionarioService {
       await prisma.resposta.deleteMany({
         where: { questionarioId: Number(id) }
       });
+      await prisma.resultado.deleteMany({
+        where: { questionarioId: Number(id) }
+      });
       await prisma.questionarioPergunta.deleteMany({
         where: { questionarioId: Number(id) }
       });
