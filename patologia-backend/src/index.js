@@ -44,11 +44,6 @@ app.use('/ia-uploads', express.static(path.join(__dirname, '../uploads/ia-upload
 const frontendBuildPath = path.join(__dirname, '../../patologia-frontend/dist');
 app.use(express.static(frontendBuildPath));
 
-// fallback para SPA: sempre retorna index.html para rotas não encontradas
-app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendBuildPath, 'index.html'));
-});
-
 // documentação da api via swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
@@ -86,6 +81,11 @@ app.get('/api/status', (req, res) => {
 
 // tratamento global de erros
 app.use(errorHandler);
+
+// fallback para SPA: sempre retorna index.html para rotas não encontradas
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendBuildPath, 'index.html'));
+});
 
 // conecta ao banco e inicia o servidor
 prisma.$connect()
