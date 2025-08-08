@@ -2,7 +2,7 @@ const { HttpError } = require('../utils/HttpError');
 
 // middleware para validar requisições usando um schema joi
 const validateRequest = (schema, property = 'body') => {
-  return (req, res, next) => {
+  return (req, next) => {
     console.log('Validando requisição...');
     console.log('Dados recebidos:', req[property]);
 

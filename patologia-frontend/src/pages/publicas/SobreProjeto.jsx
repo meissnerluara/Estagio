@@ -8,10 +8,7 @@ export default function SobreProjeto() {
       <div className="card">
         <h1 className="titulosobreoprojeto text-center">Sobre o Projeto</h1>
         <p className="explicacaosobreoprojeto">
-          Sobre o Projeto
-        </p>
-        <p className="explicacaosobreoprojeto">
-          Sobre o Projeto
+          Edite aqui a explicação sobre o projeto
         </p>
       </div>
     </div>

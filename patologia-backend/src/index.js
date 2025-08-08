@@ -40,6 +40,15 @@ app.use(cookieParser());
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.use('/ia-uploads', express.static(path.join(__dirname, '../uploads/ia-uploads')));
 
+// servir o build do frontend
+const frontendBuildPath = path.join(__dirname, '../../patologia-frontend/dist');
+app.use(express.static(frontendBuildPath));
+
+// fallback para SPA: sempre retorna index.html para rotas não encontradas
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendBuildPath, 'index.html'));
+});
+
 // documentação da api via swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
