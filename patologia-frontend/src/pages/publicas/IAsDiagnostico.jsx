@@ -100,7 +100,7 @@ function IAsDiagnostico() {
     formData.append('regiao', regiao);
 
     try {
-      const response = await axios.post('http://localhost:3001/ia/diagnostico', formData, {
+  const response = await axios.post(`${import.meta.env.VITE_API_URL.replace(/\/api$/, '')}/ia/diagnostico`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
