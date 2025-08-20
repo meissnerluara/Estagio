@@ -9,7 +9,7 @@ Voltada para estudantes e professores da área da saúde, com foco em exames de 
 
 ## Alunos Responsáveis
 
-- Luara Godoy Meissner Pereira
+- Luara Godoy Meissner Pereira.
 - Eli Makoto Higashi Matias
 
 ## Funcionalidades
