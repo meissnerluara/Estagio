@@ -1,7 +1,16 @@
-# Trabalho de Estágio
+# Sobre o Projeto
+
+**Faculdade:** Universidade de Mogi das Cruzes  
+**Matéria:** Estágio Supervisionado  
+**Professora:** Silvia Cristina Martini
 
 Plataforma educacional desenvolvida como trabalho de estágio do 7º semestre do curso de Sistemas de Informação da Universidade de Mogi das Cruzes (UMC).
 Voltada para estudantes e professores da área da saúde, com foco em exames de imagem médica, questões de múltipla escolha e apoio de Inteligência Artificial para diagnósticos.
+
+## Alunos Responsáveis
+
+- Luara Godoy Meissner Pereira
+- Eli Makoto Higashi Matias
 
 ## Funcionalidades
 - Cadastro e login de alunos e professores
@@ -21,7 +30,7 @@ Voltada para estudantes e professores da área da saúde, com foco em exames de 
 
 ## Estrutura do Projeto
 ```
-patologia-frontend/   # Aplicação React (interface do usuário)
+patologia-frontend/   # Aplicação React
 patologia-backend/    # API Node.js/Express, scripts de IA e banco de dados
 ```
 
