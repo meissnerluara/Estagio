@@ -1,4 +1,4 @@
-# patologIA
+# Trabalho de Estágio
 
 Plataforma educacional desenvolvida como trabalho de estágio do 7º semestre do curso de Sistemas de Informação da Universidade de Mogi das Cruzes (UMC).
 Voltada para estudantes e professores da área da saúde, com foco em exames de imagem médica, questões de múltipla escolha e apoio de Inteligência Artificial para diagnósticos.
